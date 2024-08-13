@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css"; // Assuming you have a CSS file for styling
+import "./Navbar.css";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -10,12 +16,19 @@ const Navbar = () => {
           <img src="/logoCrick.ico" alt="Logo" className="logo" />
         </Link>
       </div>
-      <ul className="navbar-links">
+      <div className="menu-icon" onClick={toggleMenu}>
+        <i className={isOpen ? "fas fa-times" : "fas fa-bars"}></i>
+      </div>
+      <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
         <li>
-          <Link to="/">Current Matches</Link>
+          <Link to="/" onClick={toggleMenu}>
+            Current Matches
+          </Link>
         </li>
         <li>
-          <Link to="/searchSeries">Search Series</Link>
+          <Link to="/searchSeries" onClick={toggleMenu}>
+            Search Series
+          </Link>
         </li>
       </ul>
     </nav>
