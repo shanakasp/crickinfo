@@ -4,20 +4,31 @@ import "./CurrentMatches.css"; // Custom CSS for styling
 
 const CurrentMatches = () => {
   const [matches, setMatches] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchCurrentMatches = async () => {
     try {
       const data = await getCurrentMatches();
       setMatches(data.data);
+      setLoading(false); // Data has been fetched
       console.log(data);
     } catch (error) {
       console.error("Error fetching matches:", error);
+      setLoading(false); // In case of error, stop loading
     }
   };
 
   useEffect(() => {
     fetchCurrentMatches();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="matches-container">
