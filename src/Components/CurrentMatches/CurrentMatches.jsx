@@ -26,7 +26,7 @@ const CurrentMatches = () => {
         {matches &&
           matches.map((match) => (
             <div key={match.id} className="match-card">
-              <h2 className="match-title">{match.name}</h2>
+              <h2>{match.name}</h2>
               <p>
                 <strong>Type:</strong>{" "}
                 {match.matchType ? match.matchType.toUpperCase() : "N/A"}

@@ -1,27 +1,23 @@
-import React, { useState } from "react";
-import "./Navbar.css"; // Custom CSS file for styling
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css"; // Assuming you have a CSS file for styling
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <nav className="navbar">
-      <div className="navbar-logo">Your Logo</div>
-      <div className={`navbar-links ${isOpen ? "open" : ""}`}>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+      <div className="navbar-logo">
+        <Link to="/">
+          <img src="/logoCrick.ico" alt="Logo" className="logo" />
+        </Link>
       </div>
-      <div className="navbar-toggle" onClick={toggleMenu}>
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
-      </div>
+      <ul className="navbar-links">
+        <li>
+          <Link to="/">Current Matches</Link>
+        </li>
+        <li>
+          <Link to="/searchSeries">Search Series</Link>
+        </li>
+      </ul>
     </nav>
   );
 };
