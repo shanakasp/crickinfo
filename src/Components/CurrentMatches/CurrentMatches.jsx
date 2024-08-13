@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getCurrentMatches } from "../../CrickService";
-import "./CurrentMatches.css"; // Custom CSS for styling
+import "./CurrentMatches.css";
 
 const CurrentMatches = () => {
   const [matches, setMatches] = useState([]);
@@ -10,11 +10,11 @@ const CurrentMatches = () => {
     try {
       const data = await getCurrentMatches();
       setMatches(data.data);
-      setLoading(false); // Data has been fetched
+      setLoading(false);
       console.log(data);
     } catch (error) {
       console.error("Error fetching matches:", error);
-      setLoading(false); // In case of error, stop loading
+      setLoading(false);
     }
   };
 
