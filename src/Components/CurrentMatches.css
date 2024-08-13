@@ -1,0 +1,53 @@
+.matches-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.match-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.match-card:hover {
+  transform: translateY(-5px);
+}
+
+.match-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.teams-section,
+.scores-section {
+  margin-top: 15px;
+}
+
+.team-list,
+.score-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.team-item,
+.score-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.team-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 10px;
+}

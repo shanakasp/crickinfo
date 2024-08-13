@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getCurrentMatches } from "../CrickService";
+import "./CurrentMatches.css"; // Custom CSS for styling
 
 const CurrentMatches = () => {
   const [matches, setMatches] = useState([]);
@@ -9,7 +10,9 @@ const CurrentMatches = () => {
       const data = await getCurrentMatches();
       setMatches(data.data);
       console.log(data);
-    } catch {}
+    } catch (error) {
+      console.error("Error fetching matches:", error);
+    }
   };
 
   useEffect(() => {
@@ -17,13 +20,13 @@ const CurrentMatches = () => {
   }, []);
 
   return (
-    <div>
+    <div className="matches-container">
       <h1>Current Cricket Matches</h1>
-      <ul>
+      <div className="matches-grid">
         {matches &&
           matches.map((match) => (
-            <li key={match.id}>
-              <h2>{match.name}</h2>
+            <div key={match.id} className="match-card">
+              <h2 className="match-title">{match.name}</h2>
               <p>
                 <strong>Type:</strong>{" "}
                 {match.matchType ? match.matchType.toUpperCase() : "N/A"}
@@ -38,34 +41,34 @@ const CurrentMatches = () => {
                 <strong>Date:</strong>{" "}
                 {new Date(match.dateTimeGMT).toLocaleString()}
               </p>
-              <div>
+              <div className="teams-section">
                 <strong>Teams:</strong>
-                <ul>
+                <ul className="team-list">
                   {match.teamInfo.map((team, index) => (
-                    <li key={index}>
+                    <li key={index} className="team-item">
                       <img
                         src={team.img}
                         alt={team.name}
-                        style={{ width: "48px", marginRight: "10px" }}
+                        className="team-img"
                       />
                       {team.name} ({team.shortname || team.name})
                     </li>
                   ))}
                 </ul>
               </div>
-              <div>
+              <div className="scores-section">
                 <strong>Scores:</strong>
-                <ul>
+                <ul className="score-list">
                   {match.score.map((inning, index) => (
-                    <li key={index}>
+                    <li key={index} className="score-item">
                       {inning.inning}: {inning.r}/{inning.w} in {inning.o} overs
                     </li>
                   ))}
                 </ul>
               </div>
-            </li>
+            </div>
           ))}
-      </ul>
+      </div>
     </div>
   );
 };
