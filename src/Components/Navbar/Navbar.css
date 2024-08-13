@@ -1,9 +1,13 @@
 .navbar {
   display: flex;
   align-items: center;
+  position: fixed;
+  width: 98%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
   background-color: #34d082; /* Adjust color as needed */
-  justify-content: space-between; /* Ensure space between logo and toggle button */
+  justify-content: space-between;
+  z-index: 1000;
 }
 
 .navbar-logo {
@@ -22,6 +26,7 @@
   display: flex;
   margin: 0;
   padding: 0;
+  margin-right: 40px;
 }
 
 .navbar-links li {
