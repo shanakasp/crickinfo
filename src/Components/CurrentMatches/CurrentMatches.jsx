@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCurrentMatches } from "../CrickService";
+import { getCurrentMatches } from "../../CrickService";
 import "./CurrentMatches.css"; // Custom CSS for styling
 
 const CurrentMatches = () => {
